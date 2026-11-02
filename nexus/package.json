@@ -1,0 +1,59 @@
+{
+  "name": "nexus",
+  "version": "0.1.0",
+  "description": "NEXUS — AI hand-gesture spatial desktop controller",
+  "main": "dist-electron/main.js",
+  "author": "NEXUS",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "npm run build:electron && electron .",
+    "build": "tsc -b && vite build",
+    "build:electron": "tsc -p electron/tsconfig.json",
+    "build:all": "npm run build && npm run build:electron",
+    "start": "npm run build:all && electron .",
+    "package": "npm run build:all && electron-builder",
+    "lint": "eslint . --ext ts,tsx",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mediapipe/hands": "^0.4.1675469240",
+    "@mediapipe/camera_utils": "^0.3.1675466862",
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/drei": "^9.114.3",
+    "three": "^0.169.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.169.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3",
+    "eslint": "^8.57.0",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4"
+  },
+  "build": {
+    "appId": "com.nexus.app",
+    "productName": "NEXUS",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
